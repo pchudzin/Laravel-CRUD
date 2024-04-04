@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use App\Models\Student;
 use Illuminate\View\View;
+
+use App\Models\Student;
+
 
 class StudentController extends Controller
 {
@@ -24,7 +26,7 @@ class StudentController extends Controller
      */
     public function create(): View
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -32,7 +34,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Student::create($input);
+        return redirect('student')->with('flash_message', 'Student Addedd!');
     }
 
     /**
