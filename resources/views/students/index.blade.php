@@ -1,9 +1,9 @@
 @extends('students.layout')
 @section('content')
-    <div class="container">
+    
         <div class="row">
- 
-            <div class="col-md-9">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <h2>Laravel 10 Crud</h2>
@@ -52,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2"></div>
         </div>
-    </div>
+    
 @endsection
