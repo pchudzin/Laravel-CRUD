@@ -17,6 +17,9 @@
                 background-color: green !important;
                 color: white !important;
             }
+            .alert-danger{
+                padding: 5px;
+            }
         </style>
     </head>
     <body>

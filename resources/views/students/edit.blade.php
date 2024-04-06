@@ -17,7 +17,15 @@
     <div class="card">
       <div class="card-header">Edytuj Studenta</div>
       <div class="card-body">
-          
+      @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
           <form action="{{ url('student/' .$students->id) }}" method="post">
             {!! csrf_field() !!}
             @method("PATCH")

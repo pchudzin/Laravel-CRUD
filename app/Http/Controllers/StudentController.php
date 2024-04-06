@@ -32,10 +32,18 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        $validated = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'mobile' => 'required',
+            'birthdate' => 'required',
+            'pesel' => 'required|digits:11'
+        ]);
         $input = $request->all();
         Student::create($input);
+        
         return redirect('student')->with('flash_message', 'Student Addedd!');
     }
 
@@ -51,18 +59,25 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): View
+    public function edit(string $id ): View
     {
         $student = Student::find($id);
         return view('students.edit')->with('students', $student);
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id): RedirectResponse
     {
         $student = Student::find($id);
+        $validated = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'mobile' => 'required',
+            'birthdate' => 'required',
+            'pesel' => 'required|digits:11'
+        ]);
         $input = $request->all();
         $student->update($input);
         return redirect('student')->with('flash_message', 'student Updated!');
