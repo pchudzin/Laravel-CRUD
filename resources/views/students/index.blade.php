@@ -3,6 +3,8 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="{{ asset('js/moment.js') }}"></script>
+
 <style>
     .table-responsive{
         padding: 10px;
@@ -14,9 +16,9 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <div class="card">
+        <div class="card box-sh">
             <div class="card-header">
-                <h2>Studenci</h2>
+                <h4>Studenci</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -63,10 +65,23 @@
 
 <script>
     let table = new DataTable('#studentsDataTable', {
-        info: false,
         columnDefs: [
-            { targets: [5], orderable: false}
-        ]
+            { 
+                targets: [5], 
+                orderable: false
+            },
+            {
+                targets: [3],
+                render: DataTable.render.datetime('DD.MM.YYYY'),
+                type: 'datetime-moment'
+            }
+        ],
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/2.0.3/i18n/pl.json',
+            search: "",
+            searchPlaceholder: "Szukaj...",
+        },
+        
     });
 </script>
 @endsection

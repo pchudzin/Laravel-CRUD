@@ -14,8 +14,8 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <div class="card">
-      <div class="card-header">Edytuj Studenta</div>
+    <div class="card box-sh">
+      <div class="card-header"><h6>Edytuj Studenta</h6></div>
       <div class="card-body">
       @if ($errors->any())
             <div class="alert alert-danger">
