@@ -26,7 +26,7 @@
                 </ul>
             </div>
         @endif
-          <form action="{{ url('student/' .$students->id) }}" method="post">
+          <form action="{{ url('student/' .$students->id) }}" method="post"  enctype="multipart/form-data">
             {!! csrf_field() !!}
             @method("PATCH")
             <input type="hidden" name="id" id="id" value="{{$students->id}}" id="id" />
@@ -39,7 +39,9 @@
             <label>Data Urodzenia</label>
             <input type="date" name="birthdate" id="birthdate" value="{{$students->birthdate}}" class="form-control mb-20">
             <label>PESEL</label>
-            <input type="int" name="pesel" id="pesel" value="{{$students->pesel}}" class="form-control mb-30">
+            <input type="text" name="pesel" id="pesel" value="{{$students->pesel}}" class="form-control mb-20">
+            <label>Zdjęcie</label>
+            <input type="file"  name="image" id="image" class="form-control mb-30">
             <input type="submit" value="Edytuj" class="btn btn-success">
         </form>
       

@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 use App\Models\Student;
-
+use File;
 
 class StudentController extends Controller
 {
@@ -39,11 +39,26 @@ class StudentController extends Controller
             'address' => 'required',
             'mobile' => 'required',
             'birthdate' => 'required',
-            'pesel' => 'required|digits:11'
+            'pesel' => 'required|digits:11',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $input = $request->all();
-        Student::create($input);
+
+        $student = new Student;
+
+        if($request->image){
+            $fileName = time().uniqid() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $fileName);
+            $student->image = $fileName;
+        }  
+
+        $student->name = $request->input('name');
+        $student->address = trim($request->input('address'));
+        $student->mobile = trim($request->input('mobile'));
+        $student->birthdate = $request->input('birthdate');
+        $student->pesel = $request->input('pesel');
         
+        $student->save();
+
         return redirect('student')->with('flash_message', 'Student Addedd!');
     }
 
@@ -76,10 +91,32 @@ class StudentController extends Controller
             'address' => 'required',
             'mobile' => 'required',
             'birthdate' => 'required',
-            'pesel' => 'required|digits:11'
+            'pesel' => 'required|digits:11',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $input = $request->all();
-        $student->update($input);
+
+        if($request->hasFile('image')){
+            $image_path = public_path('/storage/images/'.$student->image);
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $bannerImage = $request->file('image');
+            $imgName = time().uniqid() . '.' . $request->image->extension();
+            $destinationPath = public_path('/storage/images/');
+            $bannerImage->move($destinationPath, $imgName); 
+        }else {
+            $imgName = $student->image;
+        }
+        $student->image = $imgName;
+
+        $student->name = $request->input('name');
+        $student->address = trim($request->input('address'));
+        $student->mobile = trim($request->input('mobile'));
+        $student->birthdate = $request->input('birthdate');
+        $student->pesel = $request->input('pesel');
+        
+        $student->save();
+
         return redirect('student')->with('flash_message', 'student Updated!');
     }
 

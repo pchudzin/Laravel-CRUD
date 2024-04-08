@@ -9,6 +9,12 @@
             .mb-50{
                 margin-bottom: 50px;
             }
+            .mb-25{
+                margin-bottom: 25px;
+            }
+            .mb-15{
+                margin-bottom: 15px;
+            }
             .btn-view{
                 background-color: #009700;
                 color: white;
@@ -24,7 +30,7 @@
                 opacity: .1;
             }
             .box-sh{
-                box-shadow: 0 10px 14px 0 rgba(0,0,0,0.06);
+                box-shadow: 0 10px 14px 0 rgba(0,0,0,0.07);
             }
             svg{
                 margin-top: -6px;
@@ -34,9 +40,6 @@
             } 
             #navbarNav{
                 gap: 10px;
-            }
-            .btn-group-sm>.btn, .btn-sm {
-                --bs-btn-padding-y: 0.2rem;
             }
             thead tr{
                 border-bottom: 1px solid #979797;
@@ -55,10 +58,13 @@
             table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after{
                 content: '';
             }
+            .border-btm-lgray {
+                border-bottom: 1px solid #e7e7e7;
+            }
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-50 box-sh">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-50 box-sh border-btm-lgray">
             <!-- <a class="navbar-brand" href="#">
                 <i class="bi bi-people-fill"></i>
             </a> -->

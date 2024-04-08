@@ -12,6 +12,9 @@
     th{
         font-weight: 500;
     }
+    table tbody tr td{
+        vertical-align:middle;
+    }
 </style>
 <div class="row">
     <div class="col-md-2"></div>
@@ -38,7 +41,15 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $student->name }}</td>
-                                <td>{{ preg_replace("/(\\w{3})/uim", "$1 ", $student->mobile) }}</td>
+                                <td>
+                                    <?php 
+                                        if( mb_strlen($student->mobile) == 9 ){
+                                            echo preg_replace("/(\\w{3})/uim", "$1 ", $student->mobile);
+                                        }else{
+                                            echo $student->mobile;
+                                        }
+                                    ?>
+                                </td>
                                 <td>{{ $student->birthdate }}</td>
                                 <td>{{ date_diff(date_create($student->birthdate), date_create('now'))->y }}</td>
                                 <td>

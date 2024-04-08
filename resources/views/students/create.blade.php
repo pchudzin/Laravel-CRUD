@@ -27,21 +27,22 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ url('student') }}" method="post">
+        <form action="{{ url('student') }}" method="post" enctype="multipart/form-data">
           {!! csrf_field() !!}
           <label>Imię i Nazwisko</label>
-          <input type="text" name="name" id="name" class="form-control mb-20" value="{{ old('name') }}">
+          <input type="text" name="name" id="name" class="form-control mb-15" value="{{ old('name') }}">
           
           <label>Adres</label>
-          <input type="text" name="address" id="address" class="form-control mb-20" value="{{ old('address') }}">
+          <input type="text" name="address" id="address" class="form-control mb-15" value="{{ old('address') }}">
           
           <label>Telefon</label>
-          <input type="text" name="mobile" id="mobile" class="form-control mb-20" value="{{ old('mobile') }}">
+          <input type="text" name="mobile" id="mobile" class="form-control mb-15" value="{{ old('mobile') }}">
           <label>Data Urodzenia</label>
-          <input type="date" name="birthdate" id="birthdate" class="form-control mb-20" value="{{ old('birthdate') }}">
+          <input type="date" name="birthdate" id="birthdate" class="form-control mb-15" value="{{ old('birthdate') }}">
           <label>PESEL</label>
-          <input type="number" name="pesel" id="pesel" class="form-control mb-30" value="{{ old('pesel') }}">
-          
+          <input type="text" name="pesel" id="pesel" class="form-control mb-15" value="{{ old('pesel') }}">
+          <label>Zdjęcie</label>
+          <input type="file"  name="image" id="image" class="form-control mb-30">
           <input type="submit" value="Dodaj" class="btn btn-success">
       </form>
     
