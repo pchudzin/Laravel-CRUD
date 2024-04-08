@@ -17,21 +17,31 @@
   #studentInfo p:nth-child(even){
     margin-bottom: 0;
   }
-  #imageDiv{
+  #imageDiv {
     padding-left: 25px;
+    padding-top: 25px;
   }
   #editLink{
     position: absolute;
     right: 18px;
     top: 55px;
+    line-height: 30px;
   }
-  #editLink i{
+  #editLink i {
+    position: relative;
     padding-right: 5px;
     font-size: 16px;
+    top: -1px;
+  }
+  #editLink span {
+    position: relative;
+    top: -1px;
   }
   .btn_edit{
     background-color: #df8300;
     color: #ffffff;
+    vertical-align: middle;
+    line-height: 22px;
   }
   .btn_edit:hover{
     background-color: #c77500;
@@ -48,7 +58,7 @@
       <!-- <div class="row text-end">
         <a href="{{ url('/student/' . $students->id . '/edit') }}" title="Edytuj"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edytuj</button></a>
       </div> -->
-      <a id="editLink" href="{{ url('/student/' . $students->id . '/edit') }}" title="Edytuj"><button class="btn btn_edit btn-sm"><i class="bi bi-pencil"></i>Edytuj</button></a>
+      <a id="editLink" href="{{ url('/student/' . $students->id . '/edit') }}" title="Edytuj"><button class="btn btn_edit btn-sm"><i class="bi bi-pencil"></i><span>Edytuj</span></button></a>
       <div class="row row-cols-2 p-17">      
           <div id="studentInfo" class="col">
             <h5 class="mb-25">{{ $students->name }}</h5>
