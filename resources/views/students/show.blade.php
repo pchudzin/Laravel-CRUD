@@ -77,8 +77,8 @@
             <p>PESEL:</p><p>{{ $students->pesel }}</p>
           </div>
           <div id="imageDiv" class="col d-flex align-items-center">
-            @if (file_exists(public_path('storage/images/'.$students->image)) && !is_null($students->image))
-              <img id="studentImage" src="{{ asset('storage/images/'.$students->image) }}">
+            @if (file_exists(public_path('public/images/'.$students->image)) && !is_null($students->image))
+              <img id="studentImage" src="{{ url('public/images/'.$students->image) }}">
             @else
               <p>brak zdjęcia</p>
             @endif

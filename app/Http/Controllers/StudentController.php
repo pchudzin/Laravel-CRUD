@@ -45,11 +45,13 @@ class StudentController extends Controller
 
         $student = new Student;
 
-        if($request->image){
-            $fileName = time().uniqid() . '.' . $request->image->extension();
-            $request->image->storeAs('public/images', $fileName);
-            $student->image = $fileName;
-        }  
+        if($request->hasFile('image')){
+            $reqImage = $request->file('image');
+            $imgName = time().uniqid() . '.' . $request->image->extension();
+            $destinationPath = public_path('public/images/');
+            $reqImage->move($destinationPath, $imgName); 
+        }
+        $student->image = $imgName;
 
         $student->name = $request->input('name');
         $student->address = trim($request->input('address'));
@@ -96,15 +98,15 @@ class StudentController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            $image_path = public_path('/storage/images/'.$student->image);
+            $image_path = public_path('public/images/'.$student->image);
             if(File::exists($image_path)) {
                 File::delete($image_path);
             }
-            $bannerImage = $request->file('image');
+            $reqImage = $request->file('image');
             $imgName = time().uniqid() . '.' . $request->image->extension();
-            $destinationPath = public_path('/storage/images/');
-            $bannerImage->move($destinationPath, $imgName); 
-        }else {
+            $destinationPath = public_path('public/images/');
+            $reqImage->move($destinationPath, $imgName); 
+        }else{
             $imgName = $student->image;
         }
         $student->image = $imgName;
