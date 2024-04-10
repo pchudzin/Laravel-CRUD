@@ -61,6 +61,16 @@
             .border-btm-lgray {
                 border-bottom: 1px solid #e7e7e7;
             }
+            .btn_edit{
+                background-color: #c77500;
+                color: #ffffff;
+                vertical-align: middle;
+                line-height: 22px;
+            }
+            .btn_edit:hover{
+                background-color: #b56a00;
+                color: #ffffff;
+            }
         </style>
     </head>
     <body>

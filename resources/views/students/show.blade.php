@@ -37,16 +37,6 @@
     position: relative;
     top: -1px;
   }
-  .btn_edit{
-    background-color: #df8300;
-    color: #ffffff;
-    vertical-align: middle;
-    line-height: 22px;
-  }
-  .btn_edit:hover{
-    background-color: #c77500;
-    color: #ffffff;
-  }
 </style>
 <div class="row">
   <div class="col-md-2"></div>

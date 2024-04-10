@@ -54,7 +54,7 @@
                                 <td>{{ date_diff(date_create($student->birthdate), date_create('now'))->y }}</td>
                                 <td>
                                     <a href="{{ url('/student/' . $student->id) }}" title="Przeglądaj"><button class="btn btn-view btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>Przeglądaj</button></a>
-                                    <a href="{{ url('/student/' . $student->id . '/edit') }}" title="Edytuj"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edytuj</button></a>
+                                    <a href="{{ url('/student/' . $student->id . '/edit') }}" title="Edytuj"><button class="btn btn_edit btn-sm"></i>Edytuj</button></a>
 
                                     <form method="POST" action="{{ url('/student' . '/' . $student->id) }}" accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
