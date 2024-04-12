@@ -23,9 +23,8 @@
   }
   #editLink{
     position: absolute;
-    right: 18px;
+    right: 80px;
     top: 55px;
-    line-height: 30px;
   }
   #editLink i {
     position: relative;
@@ -37,6 +36,14 @@
     position: relative;
     top: -1px;
   }
+  #deleteForm{
+    position: absolute;
+    right: 18px;
+    top: 55px;
+  }
+  #deleteBtn{
+    height: 33px;
+  }
 </style>
 <div class="row">
   <div class="col-md-2"></div>
@@ -45,14 +52,20 @@
       <div class="card-header">
         <h6>Dane Studenta</h6>
       </div>
-      <!-- <div class="row text-end">
-        <a href="{{ url('/student/' . $students->id . '/edit') }}" title="Edytuj"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edytuj</button></a>
-      </div> -->
+
       <a id="editLink" href="{{ url('/student/' . $students->id . '/edit') }}" title="Edytuj"><button class="btn btn_edit btn-sm"><i class="bi bi-pencil"></i><span>Edytuj</span></button></a>
+
+      <form id="deleteForm" method="POST" action="{{ url('/student' . '/' . $students->id) }}" accept-charset="UTF-8" style="display:inline">
+        {{ method_field('DELETE') }}
+        {{ csrf_field() }}
+        <button id="deleteBtn" type="submit" class="btn btn-danger btn-sm" title="Usuń" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>Usuń</button>
+      </form>
+
       <div class="row row-cols-2 p-17">      
           <div id="studentInfo" class="col">
             <h5 class="mb-25">{{ $students->name }}</h5>
-            <p>Adres:</p><p>{{ $students->address }}</p>
+            <p>Adres:</p>
+              <p>{{ $students->address }}</p>
             <p>Telefon:</p> 
               <p>
                 <?php 
@@ -63,8 +76,10 @@
                   }
                 ?>
               </p>
-            <p>Data Urodzenia:</p><p>{{ $students->birthdate }}</p>
-            <p>PESEL:</p><p>{{ $students->pesel }}</p>
+            <p>Data Urodzenia:</p>
+              <p>{{ date("d.m.Y", strtotime($students->birthdate))  }}</p>
+            <p>PESEL:</p>
+              <p>{{ $students->pesel }}</p>
           </div>
           <div id="imageDiv" class="col d-flex align-items-center">
             @if (file_exists(public_path('public/images/'.$students->image)) && !is_null($students->image))

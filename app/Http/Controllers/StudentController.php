@@ -61,7 +61,7 @@ class StudentController extends Controller
         
         $student->save();
 
-        return redirect('student')->with('flash_message', 'Student Addedd!');
+        return redirect('student')->with('student_added', 'Dodano studenta.');
     }
 
     /**
@@ -119,7 +119,7 @@ class StudentController extends Controller
         
         $student->save();
 
-        return redirect('student')->with('flash_message', 'student Updated!');
+        return redirect('student')->with('student_updated', 'Dane studenta zostały zaktualizowane.');
     }
 
     /**
@@ -127,7 +127,14 @@ class StudentController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
+
+        $student = Student::find($id);
+
+        $image_path = public_path('public/images/'.$student->image);
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
         Student::destroy($id);
-        return redirect('student')->with('flash_message', 'Student deleted!'); 
+        return redirect('student')->with('student_deleted', 'Student został usunięty.'); 
     }
 }

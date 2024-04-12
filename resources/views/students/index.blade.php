@@ -25,6 +25,33 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    @if (session('student_updated'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('student_updated') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('student_deleted'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('student_deleted') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('student_added'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('student_added') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> -->
+
                     <table class="table datatable" id="studentsDataTable">
                         <thead>
                             <tr>
