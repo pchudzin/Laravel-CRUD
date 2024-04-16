@@ -23,7 +23,7 @@
   }
   #editLink{
     position: absolute;
-    right: 80px;
+    right: 75px;
     top: 55px;
   }
   #editLink i {
@@ -44,12 +44,23 @@
   #deleteBtn{
     height: 33px;
   }
+  #backArrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    width: 20px;
+    margin: auto;
+    font-size: 20px;
+    color: #787878;
+  }
 </style>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8"> 
     <div class="card box-sh">
       <div class="card-header">
+        <a id="backArrow" href="{{ url('/student') }}"><i class="bi bi-arrow-left"></i></a>
         <h6>Dane Studenta</h6>
       </div>
 
@@ -62,32 +73,32 @@
       </form>
 
       <div class="row row-cols-2 p-17">      
-          <div id="studentInfo" class="col">
-            <h5 class="mb-25">{{ $students->name }}</h5>
-            <p>Adres:</p>
-              <p>{{ $students->address }}</p>
-            <p>Telefon:</p> 
-              <p>
-                <?php 
-                  if( mb_strlen($students->mobile) == 9 ){
-                      echo preg_replace("/(\\w{3})/uim", "$1 ", $students->mobile);
-                  }else{
-                      echo $students->mobile;
-                  }
-                ?>
-              </p>
-            <p>Data Urodzenia:</p>
-              <p>{{ date("d.m.Y", strtotime($students->birthdate))  }}</p>
-            <p>PESEL:</p>
-              <p>{{ $students->pesel }}</p>
-          </div>
-          <div id="imageDiv" class="col d-flex align-items-center">
-            @if (file_exists(public_path('public/images/'.$students->image)) && !is_null($students->image))
-              <img id="studentImage" src="{{ url('public/images/'.$students->image) }}">
-            @else
-              <p>brak zdjęcia</p>
-            @endif
-          </div>
+        <div id="studentInfo" class="col">
+          <h5 class="mb-25">{{ $students->name }}</h5>
+          <p>Adres:</p>
+            <p>{{ $students->address }}</p>
+          <p>Telefon:</p> 
+            <p>
+              <?php 
+                if( mb_strlen($students->mobile) == 9 ){
+                    echo preg_replace("/(\\w{3})/uim", "$1 ", $students->mobile);
+                }else{
+                    echo $students->mobile;
+                }
+              ?>
+            </p>
+          <p>Data Urodzenia:</p>
+            <p>{{ date("d.m.Y", strtotime($students->birthdate))  }}</p>
+          <p>PESEL:</p>
+            <p>{{ $students->pesel }}</p>
+        </div>
+        <div id="imageDiv" class="col d-flex align-items-center">
+          @if (file_exists(public_path('public/images/'.$students->image)) && !is_null($students->image))
+            <img id="studentImage" src="{{ url('public/images/'.$students->image) }}">
+          @else
+            <p>brak zdjęcia</p>
+          @endif
+        </div>
       </div>
       </hr>
     </div>
