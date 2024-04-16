@@ -20,7 +20,7 @@
     top: 11px;
     width: 20px;
     margin: auto;
-    font-size: 20px;
+    font-size: 21px;
     color: #787878;
   }
 </style>
@@ -73,9 +73,6 @@
               @endif
             </div>
           </div>
-
-          
-
         </form>
       </div>
     </div>

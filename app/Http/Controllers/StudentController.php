@@ -10,6 +10,10 @@ use Illuminate\View\View;
 use App\Models\Student;
 use File;
 
+// use Illuminate\Support\Facades\Redirect;
+
+// use Illuminate\Routing\Redirector;
+
 class StudentController extends Controller
 {
     /**
@@ -125,16 +129,20 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(Request $request, string $id): RedirectResponse
     {
-
         $student = Student::find($id);
 
         $image_path = public_path('public/images/'.$student->image);
         if(File::exists($image_path)) {
             File::delete($image_path);
         }
-        Student::destroy($id);
-        return redirect('student')->with('student_deleted', 'Student został usunięty.'); 
+        if ($request->has('deleteStudent')) {
+            Student::destroy($id);
+            return redirect('student')->with('student_deleted', 'Student został usunięty.');
+        }
+        if ($request->has('deleteImage')) {
+            return redirect()->back()->with('image_deleted', 'Zdjęcie zostało usunięte.');
+        }
     }
 }
